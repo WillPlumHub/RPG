@@ -1,7 +1,12 @@
+/*This program is meant to manage the command selection.
+Firstsly, a menu is output to show the user their options.
+Secondly, the user is prompted to type the command they wish to execute.
+Then, the program should check the user's responce and take the appropriate action.*/
+
 #include <iostream>
 
 //Display command meny "graphics"
-std::string menu() {
+void menu() {
 
    std::cout << "0--------------------0" << std::endl;
    std::cout << "|______COMMANDS______|" << std::endl;
@@ -9,8 +14,6 @@ std::string menu() {
    std::cout << "| " << ">" << "Spells            |" << std::endl;
    std::cout << "| " << ">" << "Defend            |" << std::endl;
    std::cout << "0--------------------0" << std::endl;
-
-   return NULL;
 }
 
 //Choose action to be taken based off of user input
@@ -25,9 +28,7 @@ int main() {
    std::string options[] = {"Attack", "Spell", "Defend"};
 
    std::string choice;
-   std::string cmdMnu = menu();
-
-   std::cout << cmdMnu << std::endl;
+   menu();
 
    std::cout << "Chose your option: " << std::endl;
    std::cin >> choice;

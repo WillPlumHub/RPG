@@ -6,14 +6,15 @@ Then, the program should check the user's responce and take the appropriate acti
 #include <iostream>
 
 //Display command meny "graphics"
-void menu() {
+void menu(std::string x) {
 
-   std::cout << "0--------------------0" << std::endl;
-   std::cout << "|______COMMANDS______|" << std::endl;
-   std::cout << "| " << ">" << "Attack            |" << std::endl;
-   std::cout << "| " << ">" << "Spells            |" << std::endl;
-   std::cout << "| " << ">" << "Defend            |" << std::endl;
-   std::cout << "0--------------------0" << std::endl;
+   if (x == "Menu") {
+   std::cout << "0--------------------0\n|______COMMANDS______|\n| " << ">" << "Attack            |\n| " << ">" << "Spells            |\n| " << ">" << "Defend            |\n0--------------------0" << std::endl;
+   }
+
+   if (x == "Spell") {
+   std::cout << "0--------------------0\n|______COMMANDS______|\n| >Flare-1           |\n| >Lightning-2       |\n0--------------------0" << std::endl;
+   }
 }
 
 //Choose action to be taken based off of user input
@@ -27,11 +28,18 @@ int main() {
 
    std::string options[] = {"Attack", "Spell", "Defend"};
 
-   std::string choice;
-   menu();
+   std::string choice = "Menu";
+
+   menu(choice);
 
    std::cout << "Chose your option: " << std::endl;
    std::cin >> choice;
+
+   for (int x = 0; x < sizeof(options)/sizeof(options[0]); x = x + 1) {
+   if (choice == options[x]) {
+      menu(choice);
+      }
+   }
 
    return 0;
 }

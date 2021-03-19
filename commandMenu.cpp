@@ -12,7 +12,7 @@ void menu(std::string x) {
 
    if (x == "main") {
       std::cout << "0--------------------0\n|______COMMANDS______|\n| " << ">" << "Attack            |\n| " << ">" << "Spells            |\n| " << ">" << "Defend            |\n0--------------------0" << std::endl;
-   } else if (x == "SPELLS" || x == "SPELL") {
+   } else if (x == "spells" || x == "spell") {
       std::cout << "0--------------------0\n|______COMMANDS______|\n| >Flare-1           |\n| >Lightning-2       |\n0--------------------0" << std::endl;
    }
 }
@@ -27,12 +27,12 @@ void spellManage() {
 
 //Choose action to be taken based off of user input
 void optManage(std::string x) {
-   if (x == "SPELLS" || x == "SPELL") {
+   if (x == "spells" || x == "spell") {
       menu(x);
       spellManage();
-   } else if (x == "ATTACK") {
+   } else if (x == "attack") {
       std::cout << "Selected the attack command\n";
-   } else if (x== "DEFEND") {
+   } else if (x== "defend") {
       std::cout << "Selected the defence command\n";
    }
 }
@@ -40,13 +40,20 @@ void optManage(std::string x) {
 
 int main() {
 
+   std::string options[] = {"attack", "defence", "spell"};
    std::string choice = "main";
    menu(choice);
 
    std::cout << "Enter your choice\n";
    std::cin >> choice;
-   transform(choice.begin(), choice.end(), choice.begin(), ::toupper);
-   optManage(choice);
+   transform(choice.begin(), choice.end(), choice.begin(), ::tolower);
+
+   for (auto x : options) {
+      if (choice == x) {
+         menu(choice);
+         optManage(choice);
+      }
+   }
 
    return 0;
 }
